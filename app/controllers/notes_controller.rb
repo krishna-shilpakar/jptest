@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.xml
   def index
-    @notes = Note.all
+    @notes = Note.order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,8 @@ class NotesController < ApplicationController
   # GET /notes/1.xml
   def show
     @note = Note.find(params[:id])
-
+    @comment = @note.comments.build
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @note }

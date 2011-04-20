@@ -1,16 +1,16 @@
-<h1>Listing notes</h1>
-
+<section class="hfeed">
 <% @notes.each do |note| %>
-<div>
-<%= note.title %>
-<span class='note_actions'><%= link_to 'Edit', edit_note_path(note) %><%= link_to 'Destroy', note, :confirm => 'Are you sure?', :method => :delete %></span>
-</div>
-<div id="name">
-  <%= note.body.truncate(200) %>
-</div>
-<div id="name">
-  Under <%= note.category.try(:name) %> <%= pluralize(note.comments.count, 'comment')%>
-</div>
-<% end %>
 
-<%= link_to 'New Note', new_note_path %>
+  <article class="hentry">
+    <hgroup>
+      <h2 class="entry-title"><%= link_to note.title, note_path(note) %></a></h2>
+      <h6>Posted by <a class="author" href="#">Guest</a> on <abbr class="updated published" title="20100228T15:08:00"><%= note.created_at.strftime("%F")%></a></time></h6>
+    </hgroup>
+    <p class="entry-summary"><%= note.body.truncate(200) %></p>
+    <footer><a href="#"><%= pluralize(note.comments.count, 'comment')%></a> &emsp;&bull;&emsp; <span = 'under_category'><%= note.category.try(:name) %></span> </footer>
+    <br /><hr /><br />
+  </article>
+
+<% end %>
+<%= link_to 'New Note', new_note_path, :class => 'sexybutton sexyteal sexysimple' %>
+</section>
