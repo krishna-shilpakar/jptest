@@ -2,11 +2,11 @@
 <html>
 <head>
   <title>Notes</title>
-  <%= stylesheet_link_tag 'style', 'sexybuttons', 'jqtransform' %>
-  <%= javascript_include_tag :defaults, 'jquery.jqtransform' %>
+  <%= stylesheet_link_tag 'style', 'sexybuttons', 'jqtransform', 'wmd1', 'prettify' %>
+  <%= javascript_include_tag :defaults, 'prettify', 'jquery.jqtransform', 'showdown', 'wmd' %>
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body onload = "prettyPrint()">
   <%= render 'layouts/header' %>
 
 
